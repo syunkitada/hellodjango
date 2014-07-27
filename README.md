@@ -1,0 +1,3 @@
+# hellodjango
+
+djangoのテスト用です。
