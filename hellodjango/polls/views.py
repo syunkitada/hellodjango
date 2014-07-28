@@ -53,9 +53,22 @@ def vote(request, poll_id):
         choice.save()
         return HttpResponseRedirect(reverse('polls:results', args=(poll.id,)))
 
+class SubjectField(forms.CharField):
+    def clean(self, value):
+        if value == 'hoge':
+            raise forms.ValidationError('hoge is bad')
+        return value
+
 class ContactForm(forms.Form):
-    subject = forms.CharField(max_length=10)
+    subject = SubjectField(max_length=10)
     title = forms.CharField(max_length=10)
     which = forms.BooleanField()
 
 
+class PollForm(forms.ModelForm):
+    class Meta:
+        model = Poll
+
+class ChoiceForm(forms.ModelForm):
+    class Meta:
+        model = Choice
