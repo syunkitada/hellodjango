@@ -29,6 +29,7 @@ def detail(request, poll_id):
         form = ContactForm()
 
     return render(request, 'polls/detail.html', {
+        'value': [ 'test', 'aaa' ],
         'poll': poll,
         'form': form,
         'form_data': {

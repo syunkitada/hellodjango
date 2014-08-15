@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load poll_extras %}
+{{ latest_poll_list|echo }}
+
 <ul>
     {% if latest_poll_list %}
         {% for poll in latest_poll_list %}
@@ -7,3 +14,4 @@
         no poll
     {% endif %}
 </ul>
+{% endblock %}
